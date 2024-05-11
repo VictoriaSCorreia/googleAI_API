@@ -1,6 +1,7 @@
-""" !pip install -q -U google-generativeai """
+""" pip install -q -U google-generativeai """
 
-import google.generativeai as genai 
+import google.generativeai as genai
+import os
 
 GOOGLE_API_KEY="" 
 genai.configure(api_key=GOOGLE_API_KEY) 

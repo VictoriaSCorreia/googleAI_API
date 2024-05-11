@@ -27,3 +27,5 @@ documents = [DOCUMENT1, DOCUMENT2]
 
 df = pd.DataFrame(documents)
 df.columns = ["Titulo", "Conteudo"]
+
+model = "models/embedding-001"

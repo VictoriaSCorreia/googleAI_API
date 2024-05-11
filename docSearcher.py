@@ -29,3 +29,10 @@ df = pd.DataFrame(documents)
 df.columns = ["Titulo", "Conteudo"]
 
 model = "models/embedding-001"
+
+def embed_fn(title, text, model):
+  # Generating an embed of each document content
+  return genai.embed_content(model=model, 
+                             content=text, 
+                             title=title, 
+                             task_type="RETRIEVAL_DOCUMENT")["embedding"]

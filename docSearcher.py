@@ -42,9 +42,17 @@ DOCUMENT2 = {
 }
 documents = [DOCUMENT1, DOCUMENT2]
 
-df = pd.DataFrame(documents)
-df.columns = ["Titulo", "Conteudo"]
+generation_config = {
+  "temperature": 1,
+  "top_p": 0.95,
+  "top_k": 0,
+  "max_output_tokens": 8192,
+}
 
-model = "models/embedding-001"
+modelEmb = "models/embedding-001"
+model = genai.GenerativeModel(model_name="gemini-1.0-pro",
+                              generation_config=generation_config)
+
+
 
 

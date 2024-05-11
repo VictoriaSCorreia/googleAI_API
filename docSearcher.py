@@ -4,6 +4,23 @@ import google.generativeai as genai
 import numpy as np
 import pandas as pd
 
+def embed_fn(title, text, model):
+  # Generating an embed of each document content
+  return genai.embed_content(model=model,
+                             content=text,
+                             title=title,
+                             task_type="RETRIEVAL_DOCUMENT")["embedding"]
+
+def request_embed(request, df, model):
+  # Generating an embed of the request about the documents
+  requestEmbedding = genai.embed_content(model=model,
+                                         content=request,
+                                         task_type="RETRIEVAL_QUERY"
+                                           )["embedding"]     
+  scalar_products = np.dot(np.stack(df["Embeddings"]), requestEmbedding)     # Calc
+  index = np.argmax(scalar_products)    # Seeing the maximum argument (nearest)
+  return df.iloc[index]["Conteudo"]        # return the index with it's right content
+
 GOOGLE_API_KEY="" 
 genai.configure(api_key=GOOGLE_API_KEY) 
 ''' genai.configure(api_key="") '''
@@ -30,9 +47,4 @@ df.columns = ["Titulo", "Conteudo"]
 
 model = "models/embedding-001"
 
-def embed_fn(title, text, model):
-  # Generating an embed of each document content
-  return genai.embed_content(model=model, 
-                             content=text, 
-                             title=title, 
-                             task_type="RETRIEVAL_DOCUMENT")["embedding"]
+

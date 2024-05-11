@@ -53,6 +53,15 @@ modelEmb = "models/embedding-001"
 model = genai.GenerativeModel(model_name="gemini-1.0-pro",
                               generation_config=generation_config)
 
+# Creating a data frame (PANDAS)
+df = pd.DataFrame(documents)
+df.columns = ["Titulo", "Conteudo"]
+
+# Creating a new column called Embeddings (PANDAS)
+df["Embeddings"] = df.apply(lambda row: embed_fn(row["Titulo"], row["Conteudo"], modelEmb), axis=1)    
+df    
+
+
 
 
 

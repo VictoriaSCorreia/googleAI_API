@@ -61,12 +61,12 @@ df.columns = ["Titulo", "Conteudo"]
 df["Embeddings"] = df.apply(lambda row: embed_fn(row["Titulo"], row["Conteudo"], modelEmb), axis=1)    
 df    
 
-consulta = input() # "que símbolo é muito usado em endereços http"
-trecho = request_embed(consulta, df, modelEmb)
-print(trecho)
+request = input() # "que símbolo é muito usado em endereços http"
+responde_embed = request_embed(request, df, modelEmb)
+print(responde_embed)
 
 # Using the ai to vary the response
-prompt = f"Reescreva esse texto de uma forma mais formal: {trecho} "
+prompt = f"Reescreva esse texto de uma forma mais formal: {responde_embed} "
 response = model.generate_content(prompt)
 print(response.text)
 

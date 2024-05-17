@@ -69,6 +69,3 @@ print(responde_embed)
 prompt = f"Reescreva esse texto de uma forma mais formal: {responde_embed} "
 response = model.generate_content(prompt)
 print(response.text)
-
-
-

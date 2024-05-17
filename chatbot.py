@@ -31,11 +31,10 @@ model = genai.GenerativeModel(model_name="gemini-1.0-pro",
                               generation_config=generation_config,
                               safety_settings=safety_settings)
 
-
 ''' response = model.generate_content("Write a story about a magic backpack.")
 print(response.text) '''
 
-chat = model.start_chat(history=[]) # Starting a chat
+chat = model.start_chat(history=[]) # Starting a chat (history will allow it to "remember" the previous questions and the context)
 while True:
   prompt = input("Esperando prompt: ") 
   response = chat.send_message(prompt)

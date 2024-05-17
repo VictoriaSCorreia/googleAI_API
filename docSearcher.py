@@ -31,7 +31,6 @@ for m in genai.list_models():
     print(m.name)
 
 # Creating documents
-
 DOCUMENT1 = {
     "Título": "Barras",
     "Conteúdo": "A barra oblíqua [ / ] é um sinal gráfico usado: Para indicar disjunção e exclusão."

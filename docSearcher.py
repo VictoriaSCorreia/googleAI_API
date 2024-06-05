@@ -29,7 +29,6 @@ genai.configure(api_key=GOOGLE_API_KEY)
 for m in genai.list_models():
   if 'embedContent' in m.supported_generation_methods:
     print(m.name)
-
 # Creating documents
 DOCUMENT1 = {
     "Título": "Barras",
@@ -51,7 +50,6 @@ generation_config = {
 modelEmb = "models/embedding-001"
 model = genai.GenerativeModel(model_name="gemini-1.0-pro",
                               generation_config=generation_config)
-
 # Creating a data frame (PANDAS)
 df = pd.DataFrame(documents)
 df.columns = ["Titulo", "Conteudo"]
@@ -63,7 +61,6 @@ df
 request = input() # "que símbolo é muito usado em endereços http"
 responde_embed = request_embed(request, df, modelEmb)
 print(responde_embed)
-
 # Using the ai to vary the response
 prompt = f"Reescreva esse texto de uma forma mais formal: {responde_embed} "
 response = model.generate_content(prompt)

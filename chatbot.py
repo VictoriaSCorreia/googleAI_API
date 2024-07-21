@@ -36,7 +36,7 @@ print(response.text) '''
 
 chat = model.start_chat(history=[]) # Starting a chat (history will allow it to "remember" the previous questions and the context)
 while True:
-  prompt = input("Esperando prompt: ") 
+  prompt = input("Aguardando prompt: ") 
   response = chat.send_message(prompt)
   print(response.text)
   if prompt == "fim":

@@ -14,7 +14,7 @@ for m in genai.list_models():
 
 # Configuration
 generation_config = {
-  "temperature": 2,
+  "temperature": 1,
   "top_p": 0.95,
   "top_k": 0,
   "max_output_tokens": 8192,
